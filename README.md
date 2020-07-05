@@ -44,9 +44,9 @@ Field | Description | Example value
 `companycode` | The companycode of the member of the order | stormy
 `quotation_name` | The company name where a quotion has been created attached to the order | Stormy BV.
 `quotation_address` | The address of the company where a quotion has been created attached to the order | Metaalweg 4
-`quotation_postal` | The postal code of the company where a quotion has been created attached to the order | Metaalweg 4
-`quotation_city` | The city of the company where a quotion has been created attached to the order | Metaalweg 4
-`quotation_country_code` | The country code of the company where a quotion has been created attached to the order | Metaalweg 4
+`quotation_postal` | The postal code of the company where a quotion has been created attached to the order | 3751LS
+`quotation_city` | The city of the company where a quotion has been created attached to the order | Bunschoten-Spakenburg
+`quotation_country_code` | The country code of the company where a quotion has been created attached to the order | NL
 
 In addition to these fields, there are also the following fields that can be used inside the order lines loop:
 
@@ -119,3 +119,20 @@ And also in the Subject input field, for example:
 new order has been entered: {{ order_name }}, {{ order_address }}, {{ order_city }}
 {% endraw %}
 ```
+
+## Conditions
+
+Order fields can also be used in conditions. Lets say you only want to execute this
+action for `customer_id` 1000, you can add a condition like this:
+
+
+field | operator | value
+--- | --- | ---
+`{% raw %}{{ customer_id }}{% endraw %}` | = | 1000
+
+
+Or if you only want to execute this action for customers in NL:
+
+field | operator | value
+--- | --- | ---
+`{% raw %}{{ order_country_code }}{% endraw %}` | REGEXP | NL
