@@ -68,6 +68,8 @@ Example how you can the use order lines inside the email template:
 {% endraw %}
 ```
 
+## Examples
+
 A complete example for an email template:
 
 ```
