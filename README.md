@@ -56,7 +56,7 @@ Field | Description | Example value
 `location` | The location of the product | Dock 14
 `remarks` | Any remarks about this product | Gaat vaak stuk
 
-Example how you can the use order lines:
+Example how you can the use order lines inside the email template:
 
 ```python
 {% raw %}
@@ -68,7 +68,7 @@ Example how you can the use order lines:
 {% endraw %}
 ```
 
-A complete example:
+A complete example for an email template:
 
 ```
 {% raw %}
@@ -99,5 +99,21 @@ Met vriendelijke groet,
 Stormy
 
 Afdeling planning
+{% endraw %}
+```
+
+Order fields can also be used in the Address input field, for example:
+
+```
+{% raw %}
+info@my24service.com,{{ order_email }}
+{% endraw %}
+```
+
+And also in the Subject input field, for example:
+
+```
+{% raw %}
+new order has been entered: {{ order_name }}, {{ order_address }}, {{ order_city }}
 {% endraw %}
 ```
