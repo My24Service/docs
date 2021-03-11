@@ -41,6 +41,7 @@ Field | Description | Example value
 `assigned_user_username` | The username of the person that is currently assigned to the order | pieter@my24service.com
 `assigned_user_email` | The email of the person that is currently assigned to the order | pieter@my24service.com
 `assigned_user_name` | The full name of the person that is currently assigned to the order | pieter@my24service.com
+`assigned_user_id` | The ID of the that is currently assigned to the order | 2664
 `companycode` | The companycode of the member of the order | stormy
 `quotation_name` | The company name where a quotion has been created attached to the order | Stormy BV.
 `quotation_address` | The address of the company where a quotion has been created attached to the order | Metaalweg 4
