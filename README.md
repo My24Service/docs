@@ -50,6 +50,7 @@ Field | Description | Example value
 `quotation_city` | The city of the company where a quotion has been created attached to the order | Bunschoten-Spakenburg
 `quotation_country_code` | The country code of the company where a quotion has been created attached to the order | NL
 `workorder_link` | A link to the online version of the workorder | http://demo.my24service.com/order/workorder-view/00yMDdBSlpOOVBTT0E9PQ==/
+`customer_email` | Email adress(es) of the customer the order belongs to | info@customer.com
 
 In addition to these fields, there are also the following fields that can be used inside the order lines loop:
 
