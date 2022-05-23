@@ -5,8 +5,8 @@
 
 ## Order fields
 
-Here's a list of fields that can be used in email templates, or email addresses etc. Fields need to be encapsulated with "{% raw %}{{{% endraw %}" and "{% raw %}}}{% endraw %}".
-For example `{% raw %}{{ order_id }}{% endraw %}`.
+Here's a list of fields that can be used in email templates, or email addresses etc. Fields need to be encapsulated with `{{` and `}}`.
+For example `{{ order_id }}`.
 
 Field | Description | Example value
 --- | --- | ---
@@ -42,7 +42,8 @@ Field | Description | Example value
 `assigned_user_email` | The email of the person that is currently assigned to the order | pieter@my24service.com
 `assigned_user_name` | The full name of the person that is currently assigned to the order | pieter@my24service.com
 `assigned_user_id` | The ID of the that is currently assigned to the order | 2664
-`all_assigned_user_ids` | When only this value is there, send a push notification to all assigned users| 
+`all_assigned_user_ids` | When only this value is there, send a push notification to all assigned users | [ 1, 5, 10, 25 ]
+`all_assigned_usernames` | This can also be used in a condition, for example test if a username is part of the assigned users | [ Peter01, Mark ]
 `companycode` | The companycode of the member of the order | stormy
 `quotation_name` | The company name where a quotion has been created attached to the order | Stormy BV.
 `quotation_address` | The address of the company where a quotion has been created attached to the order | Metaalweg 4
@@ -77,7 +78,6 @@ Example how you can the use order lines inside the email template:
 A complete example for an email template:
 
 ```
-{% raw %}
 Beste,
 
 Er is een storing aangemaakt voor
@@ -100,28 +100,28 @@ Tel.: {{ order_tel }}
 Datum: {{ order_date }}
 Bijzonderheden klant: {{ customer_remarks }}
 
+De volgende monteurs zijn toegewezen:
+{% for username in all_assigned_usernames %}
+   *  username
+{% endfor %}
+
 Met vriendelijke groet,
 
 Stormy
 
 Afdeling planning
-{% endraw %}
 ```
 
 Order fields can also be used in the Address input field, for example:
 
 ```
-{% raw %}
 info@my24service.com,{{ order_email }}
-{% endraw %}
 ```
 
 And also in the Subject input field, for example:
 
 ```
-{% raw %}
 new order has been entered: {{ order_name }}, {{ order_address }}, {{ order_city }}
-{% endraw %}
 ```
 
 ## Conditions
@@ -132,11 +132,17 @@ action for `customer_id` 1000, you can add a condition like this:
 
 field | operator | value
 --- | --- | ---
-`{% raw %}{{ customer_id }}{% endraw %}` | = | 1000
+`{{ customer_id }}` | = | 1000
 
 
 Or if you only want to execute this action for customers in NL:
 
 field | operator | value
 --- | --- | ---
-`{% raw %}{{ order_country_code }}{% endraw %}` | REGEXP | NL
+`{{ order_country_code }}` | REGEXP | NL
+
+Or if you only want to execute this action when user Peter01 is in the assigned users:
+
+field | operator | value
+--- | --- | ---
+`{{ all_assigned_usernames }}` | CONTAINS | Peter01
