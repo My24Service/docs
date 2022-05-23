@@ -5,8 +5,9 @@
 
 ## Order fields
 
-Here's a list of fields that can be used in email templates, or email addresses etc. Fields need to be encapsulated with `{{` and `}}`.
-For example `{{ order_id }}`.
+Here's a list of fields that can be used in email templates, or email addresses etc. Fields need to be encapsulated with "{% raw %}{{{% endraw %}" and "{% raw %}}}{% endraw %}".
+
+For example `{% raw %}{{ order_id }}{% endraw %}`.
 
 Field | Description | Example value
 --- | --- | ---
@@ -78,6 +79,7 @@ Example how you can the use order lines inside the email template:
 A complete example for an email template:
 
 ```
+{% raw %}
 Beste,
 
 Er is een storing aangemaakt voor
@@ -110,18 +112,19 @@ Met vriendelijke groet,
 Stormy
 
 Afdeling planning
+{% endraw %}
 ```
 
 Order fields can also be used in the Address input field, for example:
 
 ```
-info@my24service.com,{{ order_email }}
+info@my24service.com,{% raw %}{{ order_email }}{% endraw %}
 ```
 
 And also in the Subject input field, for example:
 
 ```
-new order has been entered: {{ order_name }}, {{ order_address }}, {{ order_city }}
+{% raw %}new order has been entered: {{ order_name }}, {{ order_address }}, {{ order_city }}{% endraw %}
 ```
 
 ## Conditions
@@ -132,17 +135,17 @@ action for `customer_id` 1000, you can add a condition like this:
 
 field | operator | value
 --- | --- | ---
-`{{ customer_id }}` | = | 1000
+`{% raw %}{{ customer_id }}{% endraw %}` | = | 1000
 
 
 Or if you only want to execute this action for customers in NL:
 
 field | operator | value
 --- | --- | ---
-`{{ order_country_code }}` | REGEXP | NL
+`{% raw %}{{ order_country_code }}{% endraw %}` | REGEXP | NL
 
 Or if you only want to execute this action when user Peter01 is in the assigned users:
 
 field | operator | value
 --- | --- | ---
-`{{ all_assigned_usernames }}` | CONTAINS | Peter01
+`{% raw %}{{ all_assigned_usernames }}{% endraw %}` | CONTAINS | Peter01
