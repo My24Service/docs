@@ -51,10 +51,11 @@ Field | Description | Example value
 `quotation_postal` | The postal code of the company where a quotion has been created attached to the order | 3751LS
 `quotation_city` | The city of the company where a quotion has been created attached to the order | Bunschoten-Spakenburg
 `quotation_country_code` | The country code of the company where a quotion has been created attached to the order | NL
-`workorder_link` | A link to the online version of the workorder | http://demo.my24service.com/order/workorder-view/00yMDdBSlpOOVBTT0E9PQ==/
+`workorder_link` | A link to the online version of the workorder | https://demo.my24service.com/#/orders/orders/workorder/a3932030-ef11-43e1-aa3f-52a895f12123
 `customer_email` | Email address(es) of the customer the order belongs to | info@customer.com
 `org_order_id` | Original order ID of the copied order | 14652
 `org_member_companycode` | Company code of the member of the original order of the copied order | ritehite
+`order_detail_link` | Detail link to order | https://demo.my24service.com/#/orders/orders/detail/a3932030-ef11-43e1-aa3f-52a895f12123
 
 In addition to these fields, there are also the following fields that can be used inside the order lines loop:
 
