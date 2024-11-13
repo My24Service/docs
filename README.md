@@ -178,6 +178,7 @@ Field | Description | Example value
 `invoice.vat` | The invoice VAT | € 45.32
 `invoice.total` | The invoice total | € 154.98
 `invoice.invoicelines` | Invoice lines (see invoice line fields below) | `{% raw %}{%tr for line in invoice.invoicelines.all() %}{% endraw %}`
+`invoice.created` | Invoice creation date |  | Date object (`order.start_date.strftime(‘%d-%m-%Y’)` => 5-12-2021, see https://strftime.org)
 
 ### Invoice line
 
@@ -207,10 +208,10 @@ Field | Description | Example value
 `order.order_contact` | Order company contact, often same as customer contact | Johan Cruyff
 `order.order_reference` | Order reference | Ref-212777
 `order.order_type` | Order type | Storing
-`order.start_date` | Order start date | Date object (`order.start_date.strftime(‘%d-%m-%Y’)` => 5-12-2021)
-`order.start_time` | Order start time | Time object, nullable (`order.start_time.strftime(‘%H-%M’)` => "08:00")
-`order.end_date` | Order end date | Date object (`order.end_date.strftime(‘%d-%m-%Y’)` => 5-12-2021)
-`order.end_time` | Order end time | Time object, nullable (`order.start_time.strftime(‘%H-%M’)` => "08:00")
+`order.start_date` | Order start date | Date object (`order.start_date.strftime(‘%d-%m-%Y’)` => 5-12-2021, see https://strftime.org)
+`order.start_time` | Order start time | Time object, nullable (`order.start_time.strftime(‘%H-%M’)` => "08:00", see https://strftime.org)
+`order.end_date` | Order end date | Date object (`order.end_date.strftime(‘%d-%m-%Y’)` => 5-12-2021, see https://strftime.org)
+`order.end_time` | Order end time | Time object, nullable (`order.start_time.strftime(‘%H-%M’)` => "08:00", see https://strftime.org)
 `order.remarks` | Order remarks | Some remarks
 `order.description` | Order description | Some description
 
@@ -254,6 +255,7 @@ Field | Description | Example value
 `quotation.vat` | The quotation VAT | € 45.32
 `quotation.quotation_expire_days` | Quotation expire days | 30
 `quotation.chapters` | Quotation chapters (see quotation chapter fields below) | `{% raw %}{%tr for chapter in quotation.chapters.all() %}{% endraw %}`
+`quotation.created` | Quotation creation date |  | Date object (`order.start_date.strftime(‘%d-%m-%Y’)` => 5-12-2021, see https://strftime.org)
 
 ### Quotation chapter
 
