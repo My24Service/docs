@@ -236,7 +236,7 @@ Field | Description | Example value
 
 Field | Description | Example value
 --- | --- | ---
-`quotation_id` | The quotation ID as created by my24service | 11004
+`quotation.quotation_id` | The quotation ID as created by my24service | 11004
 `quotation.name` | Name of the quotation | My quotation
 `quotation.customer_id` | The customer ID, often same as customer ID | 51199
 `quotation.quotation_name` | Quotation company name, often same as customer name | Ikea B.V.
