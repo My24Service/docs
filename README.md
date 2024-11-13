@@ -1,9 +1,11 @@
-# my24-docs
+# My24Service docs
 
 * TOC
 {:toc}
 
-## Order fields
+## Statuscode template fields
+
+### Orders
 
 Here's a list of fields that can be used in email templates, or email addresses etc. Fields need to be encapsulated with "{% raw %}{{{% endraw %}" and "{% raw %}}}{% endraw %}".
 
@@ -77,7 +79,7 @@ Example how you can the use order lines inside the email template:
 {% endraw %}
 ```
 
-## Examples
+#### Examples
 
 A complete example for an email template:
 
@@ -130,7 +132,7 @@ And also in the Subject input field, for example:
 {% raw %}new order has been entered: {{ order_name }}, {{ order_address }}, {{ order_city }}{% endraw %}
 ```
 
-## Conditions
+#### Conditions
 
 Order fields can also be used in conditions. Lets say you only want to execute this
 action for `customer_id` 1000, you can add a condition like this:
@@ -154,47 +156,55 @@ field | operator | value
 --- | --- | ---
 `{% raw %}{{ all_assigned_usernames }}{% endraw %}` | CONTAINS | Peter01
 
-## Invoice template fields
+### Quotations
 
-### Invoice
+_TODO implement & document_
+
+### Invoices
+
+_TODO implement & document_
+
+### Invoice template fields
+
+#### Invoice
 
 Field | Description | Example value
 --- | --- | ---
-`invoice.invoice_id` | The invoice ID created by my24service | 11004
+`invoice.invoice_id` | The invoice ID as created by my24service | 11004
 `invoice.reference` | The invoice reference | ref-236891
 `invoice.description` | The invoice description | Invoice for december
 `invoice.term_of_payment_days` | The invoice payment days term | 30
 `invoice.vat_type` | The invoice VAT type | 21%
 `invoice.vat` | The invoice VAT | € 45.32
 `invoice.total` | The invoice total | € 154.98
-`invoice.invoicelines` | Invoice lines (see invoice line fields below) | `{% raw %}{%tr for line in invoice.invoicelines.all() %}{% endraw %}`
+`invoice.invoicelines` | Invoice lines (see invoice line fields below) | `{%tr for line in invoice.invoicelines.all() %}`
 
-### Invoice line
+#### Invoice line
 
 Field | Description | Example value
 --- | --- | ---
-`line.description` | Invoice line description | Workhours Michael Jackson
+`line.description` | Invoice line description | Workhours Johan Cruyff
 `line.amount` | Invoice line amount | 13:45
 `line.vat_type` | Invoice line VAT type | 9%
 `line.vat` | Invoice line VAT | € 45.32
 `line.price` | Invoice line price | € 51.13
 `line.total` | Invoice line total | € 154.98
 
-### Order
+#### Order
 
 Field | Description | Example value
 --- | --- | ---
-`order.customer_id` | The customer ID | 51199
-`order.order_id` | The order ID created by my24service | 1004
+`order.customer_id` | The customer ID, often same as customer ID | 51199
+`order.order_id` | The order ID as created by my24service | 1004
 `order.order_name` | Order company name, often same as customer name | Ikea B.V.
 `order.order_address` | Order company address, often same as customer address | Amstelveensestraat 12
 `order.order_postal` | Order company postal, often same as customer postal | 1200AX
 `order.order_city` | Order company city, often same as customer city | Amsterdam
 `order.order_country_code` | Order company country code, often same as customer country code | NL
-`order.order_email` | Order company email, often same as customer email | michael.jackson@ikea.com.
+`order.order_email` | Order company email, often same as customer email | johan.cruyff@ikea.com.
 `order.order_tel` | Order company telephone, often same as customer telephone | 020-1234567
 `order.order_mobile` | Order company mobile, often same as customer mobile | 06-12345678
-`order.order_contact` | Order company contact, often same as customer contact | Michael Jackson
+`order.order_contact` | Order company contact, often same as customer contact | Johan Cruyff
 `order.order_reference` | Order reference | Ref-212777
 `order.order_type` | Order type | Storing
 `order.start_date` | Order start date | Date object (`order.start_date.strftime(‘%d-%m-%Y’)` => 5-12-2021)
@@ -204,7 +214,7 @@ Field | Description | Example value
 `order.remarks` | Order remarks | Some remarks
 `order.description` | Order description | Some description
 
-### Customer
+#### Customer
 
 Field | Description | Example value
 --- | --- | ---
@@ -213,8 +223,71 @@ Field | Description | Example value
 `customer.address` | Customer address | Amstelveensestraat 12
 `customer.postal` | Customer postal | 1200AX
 `customer.country_code` | Customer country code | NL
-`customer.contact` | Customer contact | Michael Jackson
+`customer.contact` | Customer contact | Johan Cruyff
 `customer.city` | Customer city | Amsterdam
 `customer.tel` | Customer telephone | 020-1234567
-`customer.email` | Customer email | michael.jackson@ikea.com
+`customer.email` | Customer email | johan.cruyff@ikea.com
+`customer.mobile` | Customer mobile | 06-12345678
+
+### Quotation template fields
+
+#### Quotation
+
+Field | Description | Example value
+--- | --- | ---
+`quotation_id` | The quotation ID as created by my24service | 11004
+`quotation.name` | Name of the quotation | My quotation
+`quotation.customer_id` | The customer ID, often same as customer ID | 51199
+`quotation.quotation_name` | Quotation company name, often same as customer name | Ikea B.V.
+`quotation.quotation_address` | Quotation company address, often same as customer address | Amstelveensestraat 12
+`quotation.quotation_postal` | Quotation company postal, often same as customer postal | 1200AX
+`quotation.quotation_city` | Quotation company city, often same as customer city | Amsterdam
+`quotation.quotation_country_code` | Quotation company country code, often same as customer country code | NL
+`quotation.quotation_email` | Quotation company email, often same as customer email | johan.cruyff@ikea.com.
+`quotation.quotation_tel` | Quotation company telephone, often same as customer telephone | 020-1234567
+`quotation.quotation_mobile` | Quotation company mobile, often same as customer mobile | 06-12345678
+`quotation.quotation_contact` | Quotation company contact, often same as customer contact | Johan Cruyff
+`quotation.quotation_reference` | Quotation reference | Ref-212777
+`quotation.description` | Quotation description | Some description
+`quotation.vat_type` | The quotation VAT type | 21%
+`quotation.total` | The quotation total | € 154.98
+`quotation.vat` | The quotation VAT | € 45.32
+`quotation.quotation_expire_days` | Quotation expire days | 30
+`quotation.chapters` | Quotation chapters (see quotation chapter fields below) | `{% raw %}{%tr for chapter in quotation.chapters.all() %}{% endraw %}`
+
+
+#### Quotation chapter
+
+Field | Description | Example value
+--- | --- | ---
+`chapter.name` | Chapter name | General section
+`chapter.description` | Chapter description | Some description
+`chapter.lines` | Chapter quotation lines (see quotation line fields below) | `{% raw %}{%tr for line in chapter.lines.all() %}{% endraw %}`
+
+
+#### Quotation line
+
+Field | Description | Example value
+--- | --- | ---
+`line.amount` | Invoice line amount | 13:45
+`line.info` | Quotation line info | Workhours
+`line.extra_description` | Quotation line extra description | Some optional extra text
+`line.vat_type` | Quotation line VAT type | 9%
+`line.price` | Quotation line price | € 51.13
+`line.vat` | Quotation line VAT | € 45.32
+`line.total` | Quotation line total | € 154.98
+
+#### Customer
+
+Field | Description | Example value
+--- | --- | ---
+`customer.customer_id` | The customer ID | 51199
+`customer.name` | Customer name | Ikea B.V.
+`customer.address` | Customer address | Amstelveensestraat 12
+`customer.postal` | Customer postal | 1200AX
+`customer.country_code` | Customer country code | NL
+`customer.contact` | Customer contact | Johan Cruyff
+`customer.city` | Customer city | Amsterdam
+`customer.tel` | Customer telephone | 020-1234567
+`customer.email` | Customer email | johan.cruyff@ikea.com
 `customer.mobile` | Customer mobile | 06-12345678
