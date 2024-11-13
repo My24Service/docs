@@ -164,9 +164,9 @@ _TODO implement & document_
 
 _TODO implement & document_
 
-### Invoice template fields
+## Invoice template fields
 
-#### Invoice
+### Invoice
 
 Field | Description | Example value
 --- | --- | ---
@@ -179,7 +179,7 @@ Field | Description | Example value
 `invoice.total` | The invoice total | € 154.98
 `invoice.invoicelines` | Invoice lines (see invoice line fields below) | `{% raw %}{%tr for line in invoice.invoicelines.all() %}{% endraw %}`
 
-#### Invoice line
+### Invoice line
 
 Field | Description | Example value
 --- | --- | ---
@@ -190,7 +190,7 @@ Field | Description | Example value
 `line.price` | Invoice line price | € 51.13
 `line.total` | Invoice line total | € 154.98
 
-#### Order
+### Order
 
 Field | Description | Example value
 --- | --- | ---
@@ -214,7 +214,7 @@ Field | Description | Example value
 `order.remarks` | Order remarks | Some remarks
 `order.description` | Order description | Some description
 
-#### Customer
+### Customer
 
 Field | Description | Example value
 --- | --- | ---
@@ -229,9 +229,9 @@ Field | Description | Example value
 `customer.email` | Customer email | johan.cruyff@ikea.com
 `customer.mobile` | Customer mobile | 06-12345678
 
-### Quotation template fields
+## Quotation template fields
 
-#### Quotation
+### Quotation
 
 Field | Description | Example value
 --- | --- | ---
@@ -255,8 +255,7 @@ Field | Description | Example value
 `quotation.quotation_expire_days` | Quotation expire days | 30
 `quotation.chapters` | Quotation chapters (see quotation chapter fields below) | `{% raw %}{%tr for chapter in quotation.chapters.all() %}{% endraw %}`
 
-
-#### Quotation chapter
+### Quotation chapter
 
 Field | Description | Example value
 --- | --- | ---
@@ -264,8 +263,7 @@ Field | Description | Example value
 `chapter.description` | Chapter description | Some description
 `chapter.lines` | Chapter quotation lines (see quotation line fields below) | `{% raw %}{%tr for line in chapter.lines.all() %}{% endraw %}`
 
-
-#### Quotation line
+### Quotation line
 
 Field | Description | Example value
 --- | --- | ---
@@ -277,7 +275,7 @@ Field | Description | Example value
 `line.vat` | Quotation line VAT | € 45.32
 `line.total` | Quotation line total | € 154.98
 
-#### Customer
+### Customer
 
 Field | Description | Example value
 --- | --- | ---
