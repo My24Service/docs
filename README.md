@@ -167,7 +167,7 @@ Field | Description | Example value
 `invoice.vat_type` | The invoice VAT type | 21%
 `invoice.vat` | The invoice VAT | € 45.32
 `invoice.total` | The invoice total | € 154.98
-`invoice.invoicelines` | Invoice lines (see invoice line fields below) | `{%tr for line in invoice.invoicelines.all() %}`
+`invoice.invoicelines` | Invoice lines (see invoice line fields below) | `{% raw %}{%tr for line in invoice.invoicelines.all() %}{% endraw %}`
 
 ### Invoice line
 
