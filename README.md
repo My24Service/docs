@@ -147,8 +147,74 @@ field | operator | value
 --- | --- | ---
 `{% raw %}{{ order_country_code }}{% endraw %}` | REGEXP | NL
 
+
 Or if you only want to execute this action when user Peter01 is in the assigned users:
 
 field | operator | value
 --- | --- | ---
 `{% raw %}{{ all_assigned_usernames }}{% endraw %}` | CONTAINS | Peter01
+
+## Invoice template fields
+
+### Invoice
+
+Field | Description | Example value
+--- | --- | ---
+`invoice.invoice_id` | The invoice ID created by my24service | 11004
+`invoice.reference` | The invoice reference | ref-236891
+`invoice.description` | The invoice description | Invoice for december
+`invoice.term_of_payment_days` | The invoice payment days term | 30
+`invoice.vat_type` | The invoice VAT type | 21%
+`invoice.vat` | The invoice VAT | € 45.32
+`invoice.total` | The invoice total | € 154.98
+`invoice.invoicelines` | Invoice lines (see invoice line fields below) | `{%tr for line in invoice.invoicelines.all() %}`
+
+### Invoice line
+
+Field | Description | Example value
+--- | --- | ---
+`line.description` | Invoice line description | Workhours Michael Jackson
+`line.amount` | Invoice line amount | 13:45
+`line.vat_type` | Invoice line VAT type | 9%
+`line.vat` | Invoice line VAT | € 45.32
+`line.price` | Invoice line price | € 51.13
+`line.total` | Invoice line total | € 154.98
+
+### Order
+
+Field | Description | Example value
+--- | --- | ---
+`order.customer_id` | The customer ID | 51199
+`order.order_id` | The order ID created by my24service | 1004
+`order.order_name` | Order company name, often same as customer name | Ikea B.V.
+`order.order_address` | Order company address, often same as customer address | Amstelveensestraat 12
+`order.order_postal` | Order company postal, often same as customer postal | 1200AX
+`order.order_city` | Order company city, often same as customer city | Amsterdam
+`order.order_country_code` | Order company country code, often same as customer country code | NL
+`order.order_email` | Order company email, often same as customer email | michael.jackson@ikea.com.
+`order.order_tel` | Order company telephone, often same as customer telephone | 020-1234567
+`order.order_mobile` | Order company mobile, often same as customer mobile | 06-12345678
+`order.order_contact` | Order company contact, often same as customer contact | Michael Jackson
+`order.order_reference` | Order reference | Ref-212777
+`order.order_type` | Order type | Storing
+`order.start_date` | Order start date | Date object (`order.start_date.strftime(‘%d-%m-%Y’)` => 5-12-2021)
+`order.start_time` | Order start time | Time object, nullable (`order.start_time.strftime(‘%H-%M’)` => "08:00")
+`order.end_date` | Order end date | Date object (`order.end_date.strftime(‘%d-%m-%Y’)` => 5-12-2021)
+`order.end_time` | Order end time | Time object, nullable (`order.start_time.strftime(‘%H-%M’)` => "08:00")
+`order.remarks` | Order remarks | Some remarks
+`order.description` | Order description | Some description
+
+### Customer
+
+Field | Description | Example value
+--- | --- | ---
+`customer.customer_id` | The customer ID | 51199
+`customer.name` | Customer name | Ikea B.V.
+`customer.address` | Customer address | Amstelveensestraat 12
+`customer.postal` | Customer postal | 1200AX
+`customer.country_code` | Customer country code | NL
+`customer.contact` | Customer contact | Michael Jackson
+`customer.city` | Customer city | Amsterdam
+`customer.tel` | Customer telephone | 020-1234567
+`customer.email` | Customer email | michael.jackson@ikea.com
+`customer.mobile` | Customer mobile | 06-12345678
