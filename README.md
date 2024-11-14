@@ -177,8 +177,9 @@ Field | Description | Example value
 `invoice.vat_type` | The invoice VAT type | 21%
 `invoice.vat` | The invoice VAT | € 45.32
 `invoice.total` | The invoice total | € 154.98
+`invoice.created` | Invoice creation date | Date object (`order.start_date.strftime(‘%d-%m-%Y’)` => 5-12-2021, see https://strftime.org)
+`invoice.definitive_date` | Date invoice made definitive | Date object (`order.start_date.strftime(‘%d-%m-%Y’)` => 5-12-2021, see https://strftime.org)
 `invoice.invoicelines` | Invoice lines (see invoice line fields below) | `{% raw %}{%tr for line in invoice.invoicelines.all() %}{% endraw %}`
-`invoice.created` | Invoice creation date |  | Date object (`order.start_date.strftime(‘%d-%m-%Y’)` => 5-12-2021, see https://strftime.org)
 
 ### Invoice line
 
@@ -254,8 +255,9 @@ Field | Description | Example value
 `quotation.total` | The quotation total | € 154.98
 `quotation.vat` | The quotation VAT | € 45.32
 `quotation.quotation_expire_days` | Quotation expire days | 30
-`quotation.chapters` | Quotation chapters (see quotation chapter fields below) | `{% raw %}{%tr for chapter in quotation.chapters.all() %}{% endraw %}`
 `quotation.created` | Quotation creation date |  | Date object (`order.start_date.strftime(‘%d-%m-%Y’)` => 5-12-2021, see https://strftime.org)
+`quotation.definitive_date` | Date quotation made definitive | Date object (`order.start_date.strftime(‘%d-%m-%Y’)` => 5-12-2021, see https://strftime.org)
+`quotation.chapters` | Quotation chapters (see quotation chapter fields below) | `{% raw %}{%tr for chapter in quotation.chapters.all() %}{% endraw %}`
 
 ### Quotation chapter
 
